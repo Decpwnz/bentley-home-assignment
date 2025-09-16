@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchImages } from "../services/picsumApi";
 import { ImageCard } from "./ImageCard";
 import type { PicsumImage } from "../types";
+import "../styles/Gallery.css";
 
 export const Gallery = () => {
   const [images, setImages] = useState<PicsumImage[]>([]);
@@ -26,16 +27,16 @@ export const Gallery = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading images...</div>;
+    return <div className="gallery-loading">Loading images...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="gallery-error">Error: {error}</div>;
   }
 
   return (
-    <div>
-      <div>
+    <div className="gallery-container">
+      <div className="gallery-grid">
         {images.map((image) => (
           <ImageCard key={image.id} image={image} />
         ))}
