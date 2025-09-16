@@ -4,6 +4,10 @@ import type { ImageCardProps } from "../types";
 export const ImageCard = ({ image, width }: ImageCardProps) => {
   const imageUrl = getOptimizedImageUrl(image, width);
 
+  if (!imageUrl) {
+    return <div className="image-card-error">Failed to load image</div>;
+  }
+
   return (
     <div>
       <div>
