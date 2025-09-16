@@ -6,3 +6,8 @@ export interface PicsumImage {
   url: string;
   download_url: string;
 }
+
+export interface ImageCardProps {
+  image: PicsumImage;
+  width?: number;
+}

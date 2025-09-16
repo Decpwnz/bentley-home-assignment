@@ -19,3 +19,12 @@ export const fetchImages = async (
     throw error;
   }
 };
+
+export const getOptimizedImageUrl = (
+  image: PicsumImage,
+  width: number = 300,
+  height?: number
+): string => {
+  const baseUrl = `https://picsum.photos/id/${image.id}`;
+  return height ? `${baseUrl}/${width}/${height}` : `${baseUrl}/${width}`;
+};
