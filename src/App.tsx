@@ -4,10 +4,10 @@ import "./App.css";
 function App() {
   return (
     <div className="app">
-      <header>
+      <header className="app-header">
         <h1>Image Gallery</h1>
       </header>
-      <main>
+      <main className="app-main">
         <Gallery />
       </main>
     </div>
