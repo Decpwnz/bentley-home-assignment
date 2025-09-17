@@ -7,7 +7,13 @@ export interface PicsumImage {
   download_url: string;
 }
 
-export interface ImageCardProps {
-  image: PicsumImage;
-  width?: number;
+export interface ImageWithCalculatedWidth extends PicsumImage {
+  calculatedWidth: number;
+  optimizedUrl: string;
+  aspectRatio: number;
+}
+
+export interface ImageRow {
+  images: ImageWithCalculatedWidth[];
+  totalWidth: number;
 }

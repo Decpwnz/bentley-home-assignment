@@ -33,7 +33,6 @@ body {
 
 .app-main {
   flex: 1;
-  overflow: hidden;
 }
 
 @media (max-width: 768px) {

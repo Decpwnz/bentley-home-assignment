@@ -22,9 +22,15 @@ export const fetchImages = async (
 
 export const getOptimizedImageUrl = (
   image: PicsumImage,
-  width: number = 300,
-  height?: number
-): string => {
-  const baseUrl = `https://picsum.photos/id/${image.id}`;
-  return height ? `${baseUrl}/${width}/${height}` : `${baseUrl}/${width}`;
+  targetHeight: number = 250
+): { url: string; calculatedWidth: number } => {
+  const aspectRatio = image.width / image.height;
+  const calculatedWidth = Math.round(targetHeight * aspectRatio);
+
+  const url = `https://picsum.photos/id/${image.id}/${calculatedWidth}/${targetHeight}`;
+
+  return {
+    url,
+    calculatedWidth,
+  };
 };
