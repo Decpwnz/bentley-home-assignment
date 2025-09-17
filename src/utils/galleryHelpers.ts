@@ -79,7 +79,6 @@ export const adjustRowToFitWidth = (
 
   return {
     images: adjustedImages,
-    totalWidth: availableWidth,
   };
 };
 

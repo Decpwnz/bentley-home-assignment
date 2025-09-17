@@ -20,9 +20,3 @@ export const GALLERY_LAYOUT = {
   IMAGE_GAP: 15,
   DEFAULT_IMAGE_LIMIT: 30,
 } as const;
-
-export const MEDIA_QUERIES = {
-  MOBILE: `(max-width: ${BREAKPOINTS.MOBILE}px)`,
-  TABLET: `(max-width: ${BREAKPOINTS.TABLET}px)`,
-  DESKTOP: `(max-width: ${BREAKPOINTS.DESKTOP}px)`,
-} as const;

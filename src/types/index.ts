@@ -10,10 +10,8 @@ export interface PicsumImage {
 export interface ImageWithCalculatedWidth extends PicsumImage {
   calculatedWidth: number;
   optimizedUrl: string;
-  aspectRatio: number;
 }
 
 export interface ImageRow {
   images: ImageWithCalculatedWidth[];
-  totalWidth: number;
 }
