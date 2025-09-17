@@ -48,7 +48,7 @@ export const Gallery = () => {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [images, repackImages]);
+  }, [repackImages]);
 
   useEffect(() => {
     const loadImages = async () => {

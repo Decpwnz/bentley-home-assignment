@@ -1,14 +1,20 @@
 import type { ImageWithCalculatedWidth, ImageRow } from "../types";
+import {
+  BREAKPOINTS,
+  RESPONSIVE_PADDING,
+  TARGET_HEIGHTS,
+  GALLERY_LAYOUT,
+} from "../constants/layout";
 
 export const packImagesIntoRows = (
   images: ImageWithCalculatedWidth[],
-  maxRowWidth: number = 1200,
-  targetHeight: number = 250
+  maxRowWidth: number = GALLERY_LAYOUT.MAX_CONTAINER_WIDTH,
+  targetHeight: number = TARGET_HEIGHTS.DESKTOP
 ): ImageRow[] => {
   const rows: ImageRow[] = [];
   let currentRow: ImageWithCalculatedWidth[] = [];
   let currentRowWidth = 0;
-  const gap = 15;
+  const gap = GALLERY_LAYOUT.IMAGE_GAP;
 
   for (const image of images) {
     const imageWidth = image.calculatedWidth;
@@ -78,20 +84,33 @@ export const adjustRowToFitWidth = (
 };
 
 export const getResponsiveDimensions = () => {
+  if (typeof window === "undefined") {
+    return {
+      maxWidth: GALLERY_LAYOUT.MAX_CONTAINER_WIDTH,
+      targetHeight: TARGET_HEIGHTS.DESKTOP,
+    };
+  }
+
   const screenWidth = window.innerWidth;
 
   let maxWidth;
-  if (screenWidth <= 480) {
-    maxWidth = screenWidth - 10;
-  } else if (screenWidth <= 768) {
-    maxWidth = screenWidth - 20;
-  } else if (screenWidth <= 1024) {
-    maxWidth = screenWidth - 40;
+  if (screenWidth <= BREAKPOINTS.MOBILE) {
+    maxWidth = screenWidth - RESPONSIVE_PADDING.MOBILE;
+  } else if (screenWidth <= BREAKPOINTS.TABLET) {
+    maxWidth = screenWidth - RESPONSIVE_PADDING.TABLET;
+  } else if (screenWidth <= BREAKPOINTS.DESKTOP) {
+    maxWidth = screenWidth - RESPONSIVE_PADDING.DESKTOP;
   } else {
-    maxWidth = Math.min(1200, screenWidth - 40);
+    maxWidth = Math.min(
+      GALLERY_LAYOUT.MAX_CONTAINER_WIDTH,
+      screenWidth - RESPONSIVE_PADDING.DESKTOP
+    );
   }
 
-  const targetHeight = screenWidth <= 768 ? 180 : 250;
+  const targetHeight =
+    screenWidth <= BREAKPOINTS.TABLET
+      ? TARGET_HEIGHTS.MOBILE
+      : TARGET_HEIGHTS.DESKTOP;
 
   return { maxWidth, targetHeight };
 };
