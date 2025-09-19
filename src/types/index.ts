@@ -15,3 +15,10 @@ export interface ImageWithCalculatedWidth extends PicsumImage {
 export interface ImageRow {
   images: ImageWithCalculatedWidth[];
 }
+
+export interface UseInfiniteScrollProps {
+  loading: boolean;
+  hasMore: boolean;
+  onLoadMore: () => void;
+  threshold?: number;
+}
