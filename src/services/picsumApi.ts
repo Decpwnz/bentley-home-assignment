@@ -4,10 +4,13 @@ import { GALLERY_LAYOUT, TARGET_HEIGHTS } from "../constants/layout";
 const PICSUM_API_BASE = "https://picsum.photos/v2";
 
 export const fetchImages = async (
-  limit: number = GALLERY_LAYOUT.DEFAULT_IMAGE_LIMIT
+  limit: number = GALLERY_LAYOUT.DEFAULT_IMAGE_LIMIT,
+  page: number = 1
 ): Promise<PicsumImage[]> => {
   try {
-    const response = await fetch(`${PICSUM_API_BASE}/list?limit=${limit}`);
+    const response = await fetch(
+      `${PICSUM_API_BASE}/list?limit=${limit}&page=${page}`
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

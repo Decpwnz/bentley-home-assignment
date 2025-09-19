@@ -75,6 +75,38 @@
   color: #e74c3c;
 }
 
+.gallery-loading-more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  min-height: 60px;
+}
+
+.gallery-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666;
+  background-color: #f8f9fa;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-end {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
   .gallery-container {
     padding: 10px;
